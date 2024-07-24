@@ -124,7 +124,7 @@ print = logging.info
 print(f"Args: {args}")
 print(f"Store name: {args.store_name}")
 
-tb_logger = Logger(logdir=os.path.join(args.store_root, args.store_name), flush_secs=2)
+#tb_logger = Logger(logdir=os.path.join(args.store_root, args.store_name), flush_secs=2)
 
 
 def main():
@@ -255,10 +255,10 @@ def main():
         print(f"Epoch #{epoch}: Train loss [{train_loss:.4f}]; "
               f"Val loss: MSE [{val_loss_mse:.4f}], L1 [{val_loss_l1:.4f}], G-Mean [{val_loss_gmean:.4f}]")
 
-        tb_logger.log_value('train_loss', train_loss, epoch)
-        tb_logger.log_value('val_loss_mse', val_loss_mse, epoch)
-        tb_logger.log_value('val_loss_l1', val_loss_l1, epoch)
-        tb_logger.log_value('val_loss_gmean', val_loss_gmean, epoch)
+        #tb_logger.log_value('train_loss', train_loss, epoch)
+        #tb_logger.log_value('val_loss_mse', val_loss_mse, epoch)
+        #tb_logger.log_value('val_loss_l1', val_loss_l1, epoch)
+        #tb_logger.log_value('val_loss_gmean', val_loss_gmean, epoch)
 
     # test with best checkpoint
     print("=" * 120)
