@@ -12,6 +12,7 @@ class GAILoss(_Loss):
         self.noise_sigma = torch.nn.Parameter(torch.tensor(init_noise_sigma, device="cuda"))
 
     def forward(self, pred, target):
+        print(f' noise var is {noise_var.item()}')
         noise_var = self.noise_sigma ** 2
         loss = gai_loss(pred, target, self.gmm, noise_var)
         return loss
@@ -58,6 +59,7 @@ class BNILoss(_Loss):
 
     def forward(self, pred, target):
         noise_var = self.noise_sigma ** 2
+        print(f' noise var is {noise_var.item()}')
         loss = bni_loss(pred, target, noise_var, self.bucket_centers, self.bucket_weights)
         return loss
 
