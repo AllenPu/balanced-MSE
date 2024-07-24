@@ -41,6 +41,7 @@ class BMCLoss(_Loss):
 
 
 def bmc_loss(pred, target, noise_var):
+    print(f' noise var is {noise_var.item()}')
     logits = - 0.5 * (pred - target.T).pow(2) / noise_var
     loss = F.cross_entropy(logits, torch.arange(pred.shape[0]).cuda())
     loss = loss * (2 * noise_var).detach()
@@ -57,7 +58,6 @@ class BNILoss(_Loss):
 
     def forward(self, pred, target):
         noise_var = self.noise_sigma ** 2
-        print(f' noise var is {noise_var.item()}')
         loss = bni_loss(pred, target, noise_var, self.bucket_centers, self.bucket_weights)
         return loss
 
